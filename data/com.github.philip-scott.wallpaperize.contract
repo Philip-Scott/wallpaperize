@@ -3,5 +3,5 @@ Name=Wallpaperize
 Icon=preferences-desktop-wallpaper
 Description=Beautify your oddly-sized wallpapers
 MimeType=image
-Exec=/usr/share/wallpaperize/Wallpaperize %F
+Exec=com.github.philip-scott.wallpaperize %F
 

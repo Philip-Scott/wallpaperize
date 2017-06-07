@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Wallpaperize
+Comment=Beautify your oddly-sized wallpapers
+Exec=com.github.philip-scott.wallpaperize %u
+Icon=com.github.philip-scott.wallpaperize
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Graphics;
+Actions=AboutDialog;
+
+[Desktop Action AboutDialog]
+Exec=com.github.philip-scott.wallpaperize --about
+Name=About Wallpaperize

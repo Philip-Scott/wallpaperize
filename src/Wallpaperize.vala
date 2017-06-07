@@ -1,23 +1,35 @@
 using Cairo;
 
-public class Wallpaperize : Object {
-    private const int W = 1920;
-    private const int H = 1080;
+public class Wallpaperize.Wallpaperiser : Object {
+    public static int W = 1920;
+    public static int H = 1080;
     private const int RADIUS = 12;
 
-    private Gdk.Pixbuf image;
+    private static Gdk.Pixbuf image;
 
-    private int width;
-    private int height;
-    private double zoom;
+    private static int width;
+    private static int height;
+    private static double zoom;
 
-    public int make_image (string input, string output) {
+    public static void from_file (File file) {
+      var path = file.get_path ();
+
+      string output_name = path.replace (".png", "").replace (".jpg", "") + ".wp.png";
+      make_image (path, output_name);
+    }
+
+    public static void make_image (string input, string output) {
+        var surface = make_surface (input);
+        surface.surface.write_to_png (output);
+    }
+
+    public static Granite.Drawing.BufferSurface? make_surface (string input) {
         var surface = new Granite.Drawing.BufferSurface (W, H);
         try {
             image = new Gdk.Pixbuf.from_file (input);
         } catch (Error e) {
             stderr.printf ("Error on input: %s", e.message);
-            return 1;
+            return null;
         }
 
         width = image.get_width();
@@ -78,26 +90,6 @@ public class Wallpaperize : Object {
         Gdk.cairo_set_source_pixbuf (surface.context, image, center_w, center_h);
         surface.context.fill_preserve ();
 
-        surface.surface.write_to_png (output);
-
-        return 0;
-    }
-
-    public static int main (string[] argv) {
-        var wallpaper_maker = new Wallpaperize ();
-        if (argv.length >= 2) {
-            int n = 0;
-            foreach (string file in argv) {
-                if (n++ == 0) {
-                    continue;
-                }
-                string output_name = file.replace (".png", "").replace (".jpg", "") + ".wp.png";
-                wallpaper_maker.make_image (file, output_name);
-            }
-        } else {
-            stderr.printf ("Usage: %s <images> %d\n", argv[1], argv.length);
-            return 1;
-        }
-        return 0;
+        return surface;
     }
 }
