@@ -1,0 +1,16 @@
+Source: com.github.philip-scott.wallpaperize
+Section: x11
+Priority: extra
+Maintainer: Felipe Escoto <felescoto95@hotmail.com>
+Build-Depends: debhelper (>= 9),
+               libgtk-3-dev,
+               granite,
+               meson,
+               valac
+
+Standards-Version: 3.9.3
+Package: com.github.philip-scott.wallpaperize
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Beautify your oddly-sized wallpapers
+ Turn your oddly sized wallpapers into a piece of beauty
