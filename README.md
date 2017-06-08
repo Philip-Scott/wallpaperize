@@ -1,12 +1,26 @@
 # Wallpaperize
 
-Turn your oddly sized wallpapers into a piece of beauty. On elementary os, simply right click on your picture's file, and select "Wallpaperize" from the drop down menu. 
+Turn your oddly sized wallpapers into a piece of beauty. Simply right click on your picture's file, and select "Wallpaperize" from the drop down menu. 
 
 ![Screenshot](Example.png)
 
 ## Instalation 
-1. cd to this directory
-2. Execute the make.sh file
+
+You can find this app on AppCenter, on elementary OS
+
+## Build the App
+
+Run `meson build` to configure the build environment and then change to the build directory and run `ninja` to build
+
+    meson build
+    cd build
+    mesonconf -Dprefix=/usr
+    ninja
+
+To install, use `ninja install`, then execute with `com.github.danrabbit.nimbus`
+
+    sudo ninja install
+    com.github.philip-scott.wallpaperize
 
 ### Credits
 Original app: http://backgroundifier.archagon.net

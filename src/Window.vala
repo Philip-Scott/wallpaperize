@@ -83,19 +83,25 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
     grid.orientation = Gtk.Orientation.VERTICAL;
     grid.margin = 12;
     grid.expand = true;
-    grid.row_spacing = 6;
+    grid.row_spacing = 12;
 
+    var image_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);    
+    image_box.get_style_context ().add_class ("frame");
+    
     image = new Gtk.Image ();
-    image.get_style_context ().add_class ("frame");
+    image.get_style_context ().add_class ("card");
     image.hexpand = true;
     image.height_request = 200;
+    
+    image_box.add (image);
 
     drag_label = new Gtk.Label (_("Drop Image Here"));
     drag_label.get_style_context ().add_class ("h1");
     drag_label.justify = Gtk.Justification.CENTER;
+    drag_label.sensitive = false;
 
     var overlay = new Gtk.Overlay ();
-    overlay.add (image);
+    overlay.add (image_box);
     overlay.add_overlay (drag_label);
 
     width = new Gtk.Entry ();
