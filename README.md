@@ -2,7 +2,7 @@
 
 Turn your oddly sized wallpapers into a piece of beauty. Simply right click on your picture's file, and select "Wallpaperize" from the drop down menu. 
 
-![Screenshot](Example.png)
+![Screenshot](Screenshot.png)
 
 ## Instalation 
 
