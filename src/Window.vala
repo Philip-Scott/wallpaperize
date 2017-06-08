@@ -163,7 +163,7 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
   private void validate () {
       int w = Wallpaperiser.W;
       int h = Wallpaperiser.H;
-      run_button.sensitive = w > 0 && git@github.com:a-rmz/intro-bots.gith > 0 && w < 15000 && h < 15000 && file != null;
+      run_button.sensitive = w > 0 && h > 0 && w < 15000 && h < 15000 && file != null;
   }
 
   private void get_screen_size () {
