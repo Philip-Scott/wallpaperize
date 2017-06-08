@@ -41,8 +41,8 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
   public Gtk.Entry width;
   public Gtk.Entry height;
 
-  private File _file;
-  public File file {
+  private File? _file;
+  public File? file {
       get {
           return _file;
       }
@@ -56,12 +56,15 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
             pixbuf = pixbuf.scale_simple (image.get_allocated_width (), image.get_allocated_height (), Gdk.InterpType.BILINEAR);
 
             image.set_from_pixbuf (pixbuf);
-            run_button.sensitive = true;
             run_button.label = "Wallpaperize!";
             drag_label.visible = false;
             drag_label.no_show_all = true;
+
+            validate ();
           }
       }
+
+      default = null;
   }
 
   public Window (Gtk.Application app) {
@@ -85,14 +88,14 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
     grid.expand = true;
     grid.row_spacing = 12;
 
-    var image_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);    
+    var image_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
     image_box.get_style_context ().add_class ("frame");
-    
+
     image = new Gtk.Image ();
     image.get_style_context ().add_class ("card");
     image.hexpand = true;
     image.height_request = 200;
-    
+
     image_box.add (image);
 
     drag_label = new Gtk.Label (_("Drop Image Here"));
@@ -106,18 +109,23 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
 
     width = new Gtk.Entry ();
     height = new Gtk.Entry ();
-    
+
+    width.input_purpose = Gtk.InputPurpose.DIGITS;
+    height.input_purpose = Gtk.InputPurpose.DIGITS;
+
     width.set_tooltip_text ("Width");
     height.set_tooltip_text ("Height");
 
     width.changed.connect (() => {
         Wallpaperize.Wallpaperiser.W = int.parse (width.text);
+        validate ();
     });
 
     height.changed.connect (() => {
         Wallpaperize.Wallpaperiser.H = int.parse (height.text);
+        validate ();
     });
-    
+
     var reset_button = new Gtk.Button.from_icon_name ("video-display-symbolic");
     reset_button.clicked.connect (get_screen_size);
     reset_button.set_tooltip_text ("Get resolution");
@@ -150,6 +158,12 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
     show_all ();
 
     get_screen_size ();
+  }
+
+  private void validate () {
+      int w = Wallpaperiser.W;
+      int h = Wallpaperiser.H;
+      run_button.sensitive = w > 0 && git@github.com:a-rmz/intro-bots.gith > 0 && w < 15000 && h < 15000 && file != null;
   }
 
   private void get_screen_size () {
