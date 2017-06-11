@@ -84,27 +84,25 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
 
     var grid = new Gtk.Grid ();
     grid.orientation = Gtk.Orientation.VERTICAL;
-    grid.margin = 12;
-    grid.expand = true;
+    grid.margin = 6;
+    grid.column_spacing = 12;
     grid.row_spacing = 12;
-
-    var image_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-    image_box.get_style_context ().add_class ("frame");
 
     image = new Gtk.Image ();
     image.get_style_context ().add_class ("card");
     image.hexpand = true;
     image.height_request = 200;
-
-    image_box.add (image);
+    image.margin = 6;
 
     drag_label = new Gtk.Label (_("Drop Image Here"));
-    drag_label.get_style_context ().add_class ("h1");
     drag_label.justify = Gtk.Justification.CENTER;
-    drag_label.sensitive = false;
+
+    var drag_label_style_context = drag_label.get_style_context ();
+    drag_label_style_context.add_class ("h2");
+    drag_label_style_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
     var overlay = new Gtk.Overlay ();
-    overlay.add (image_box);
+    overlay.add (image);
     overlay.add_overlay (drag_label);
 
     width = new Gtk.Entry ();
@@ -132,6 +130,7 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
 
     var resolution_box = new Gtk.Grid ();
     resolution_box.column_spacing = 6;
+    resolution_box.margin = 6;
     resolution_box.add (width);
     resolution_box.add (new Gtk.Label ("x"));
     resolution_box.add (height);
@@ -142,6 +141,7 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
     run_button.expand = true;
     run_button.halign = Gtk.Align.END;
     run_button.valign = Gtk.Align.END;
+    run_button.margin = 6;
 
     run_button.sensitive = false;
 
