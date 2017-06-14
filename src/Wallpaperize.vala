@@ -3,7 +3,7 @@ using Cairo;
 public class Wallpaperize.Wallpaperiser : Object {
     public static int W = 1920;
     public static int H = 1080;
-    private const int RADIUS = 12;
+    private const int RADIUS = 3;
 
     private static Gdk.Pixbuf image;
 
