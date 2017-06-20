@@ -13,8 +13,8 @@ public class Wallpaperize.Wallpaperiser : Object {
 
     public static void from_file (File file) {
       var path = file.get_path ();
-
-      string output_name = path.replace (".png", "").replace (".jpg", "") + ".wp.png";
+      var file_regex = new Regex (".(jp(e)g|png|tiff|gif)");
+      string output_name = file_regex.replace (path, -1, 0,"") + ".wp.png";
       make_image (path, output_name);
     }
 
