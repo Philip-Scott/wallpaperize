@@ -13,9 +13,13 @@ public class Wallpaperize.Wallpaperiser : Object {
 
     public static void from_file (File file) {
       var path = file.get_path ();
-      var file_regex = new Regex (".(jp(e)g|png|tiff|gif)");
-      string output_name = file_regex.replace (path, -1, 0,"") + ".wp.png";
-      make_image (path, output_name);
+      try {
+          var file_regex = new GLib.Regex (".(jpe?g|png|tiff|gif)$");
+          string output_name = file_regex.replace (path, path.length, 0,"") + ".wp.png";
+          make_image (path, output_name);
+      } catch (RegexError e) {
+          stdout.printf ("Error on file: %s", e.message);
+      }
     }
 
     public static void make_image (string input, string output) {
