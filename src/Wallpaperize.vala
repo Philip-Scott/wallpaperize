@@ -17,9 +17,18 @@ public class Wallpaperize.Wallpaperiser : Object {
           var file_regex = new GLib.Regex (".(jpe?g|png|tiff|gif)$");
           string output_name = file_regex.replace (path, path.length, 0,"") + ".wp.png";
           make_image (path, output_name);
+          set_wallpaper (output_name);
       } catch (RegexError e) {
           stdout.printf ("Error on file: %s", e.message);
       }
+    }
+
+    // from switchboard-plug-pantheon-shell set-wallpaper.vala
+    public static void set_wallpaper (string uri) {
+        var settings = new Settings ("org.gnome.desktop.background");
+        settings.set_string ("picture-uri", uri);
+        settings.apply ();
+        Settings.sync ();
     }
 
     public static void make_image (string input, string output) {
