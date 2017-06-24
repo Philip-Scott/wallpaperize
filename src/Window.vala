@@ -167,7 +167,7 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
   }
 
   private void get_screen_size () {
-      Wallpaperize.Wallpaperiser.get_monitor_geometry();
+      Wallpaperize.Wallpaperiser.get_monitor_geometry ();
 
       width.text = Wallpaperize.Wallpaperiser.W.to_string ();
       height.text = Wallpaperize.Wallpaperiser.H.to_string ();

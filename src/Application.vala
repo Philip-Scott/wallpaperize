@@ -45,7 +45,7 @@ public class Wallpaperize.Application : Granite.Application {
     }
 
     public override void open (File[] files, string hint) {
-        Wallpaperize.Wallpaperiser.get_monitor_geometry();
+        Wallpaperize.Wallpaperiser.get_monitor_geometry ();
         foreach (var file in files) {
             Wallpaperize.Wallpaperiser.from_file (file); 
         }

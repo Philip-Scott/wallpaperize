@@ -24,12 +24,12 @@ public class Wallpaperize.Wallpaperiser : Object {
     }
 
     public static void get_monitor_geometry() {
-        Gdk.Screen screen = Gdk.Screen.get_default();
-        int primary_monitor = screen.get_primary_monitor();
+        var screen = Gdk.Screen.get_default ();
+        int primary_monitor = screen.get_primary_monitor ();
         Gdk.Rectangle geometry;
-        screen.get_monitor_geometry(primary_monitor, out geometry);
+        screen.get_monitor_geometry (primary_monitor, out geometry);
 
-        int monitor_scale = screen.get_monitor_scale_factor(primary_monitor);
+        int monitor_scale = screen.get_monitor_scale_factor (primary_monitor);
         Wallpaperize.Wallpaperiser.H = geometry.height * monitor_scale;
         Wallpaperize.Wallpaperiser.W = geometry.width * monitor_scale;
     }
