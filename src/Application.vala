@@ -45,8 +45,7 @@ public class Wallpaperize.Application : Granite.Application {
     }
 
     public override void open (File[] files, string hint) {
-        Wallpaperize.Wallpaperiser.H = Gdk.Screen.height ();
-        Wallpaperize.Wallpaperiser.W = Gdk.Screen.width ();
+        Wallpaperize.Wallpaperiser.get_monitor_geometry ();
         foreach (var file in files) {
             Wallpaperize.Wallpaperiser.from_file (file); 
         }
