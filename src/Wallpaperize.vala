@@ -13,9 +13,33 @@ public class Wallpaperize.Wallpaperiser : Object {
 
     public static void from_file (File file) {
       var path = file.get_path ();
+      try {
+          var file_regex = new GLib.Regex (".(jpe?g|png|tiff|gif)$");
+          string output_name = file_regex.replace (path, path.length, 0,"") + ".wp.png";
+          make_image (path, output_name);
+          set_wallpaper (output_name);
+      } catch (RegexError e) {
+          stdout.printf ("Error on file: %s", e.message);
+      }
+    }
 
-      string output_name = path.replace (".png", "").replace (".jpg", "") + ".wp.png";
-      make_image (path, output_name);
+    public static void get_monitor_geometry() {
+        var screen = Gdk.Screen.get_default ();
+        int primary_monitor = screen.get_primary_monitor ();
+        Gdk.Rectangle geometry;
+        screen.get_monitor_geometry (primary_monitor, out geometry);
+
+        int monitor_scale = screen.get_monitor_scale_factor (primary_monitor);
+        Wallpaperize.Wallpaperiser.H = geometry.height * monitor_scale;
+        Wallpaperize.Wallpaperiser.W = geometry.width * monitor_scale;
+    }
+
+    // from switchboard-plug-pantheon-shell set-wallpaper.vala
+    public static void set_wallpaper (string uri) {
+        var settings = new Settings ("org.gnome.desktop.background");
+        settings.set_string ("picture-uri", uri);
+        settings.apply ();
+        Settings.sync ();
     }
 
     public static void get_monitor_geometry() {
