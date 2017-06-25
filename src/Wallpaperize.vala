@@ -12,10 +12,14 @@ public class Wallpaperize.Wallpaperiser : Object {
     private static double zoom;
 
     public static void from_file (File file) {
-      var path = file.get_path ();
-
-      string output_name = path.replace (".png", "").replace (".jpg", "") + ".wp.png";
-      make_image (path, output_name);
+        var path = file.get_path ();
+        try {
+            var file_regex = new GLib.Regex (".(jpe?g|png|tiff|gif)");
+            string output_name = file_regex.replace (path, path.length, 0, "") + ".wp.png";
+            make_image (path, output_name);
+        } catch (RegexError e) {
+            stderr.printf ("Error on file: %s", e.message);
+        }
     }
 
     public static void get_monitor_geometry() {
