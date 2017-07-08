@@ -19,7 +19,7 @@
 * Authored by: Felipe Escoto <felescoto95@hotmail.com>
 */
 
-public class Wallpaperize.Window : Gtk.ApplicationWindow {
+public class Wallpaperize.Window : Gtk.Window {
   const int MIN_WIDTH = 450;
   const int MIN_HEIGHT = 600;
   const int IMAGE_HEIGHT = 200;
@@ -31,10 +31,13 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
         background-color: @bg_color;
         background-image: none;
         border: none;
+        box-shadow: none;
+        padding: 16px;
     }
   """;
 
   public Gtk.Image image;
+  public Gtk.Button cancel_button;
   public Gtk.Button run_button;
   public Gtk.Label drag_label;
 
@@ -56,7 +59,7 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
             pixbuf = pixbuf.scale_simple (image.get_allocated_width (), image.get_allocated_height (), Gdk.InterpType.BILINEAR);
 
             image.set_from_pixbuf (pixbuf);
-            run_button.label = "Wallpaperize!";
+            run_button.label = _("Wallpaperize!");
             drag_label.visible = false;
             drag_label.no_show_all = true;
 
@@ -80,13 +83,15 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
     drag_data_received.connect (on_drag_data_received);
 
     resizable = false;
+    deletable = false;
     set_keep_above (true);
 
     var grid = new Gtk.Grid ();
     grid.orientation = Gtk.Orientation.VERTICAL;
-    grid.margin = 6;
     grid.column_spacing = 12;
     grid.row_spacing = 12;
+    grid.expand = true;
+    grid.margin = 6;
 
     image = new Gtk.Image ();
     image.get_style_context ().add_class ("card");
@@ -111,8 +116,8 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
     width.input_purpose = Gtk.InputPurpose.DIGITS;
     height.input_purpose = Gtk.InputPurpose.DIGITS;
 
-    width.set_tooltip_text ("Width");
-    height.set_tooltip_text ("Height");
+    width.set_tooltip_text (_("Width"));
+    height.set_tooltip_text (_("Height"));
 
     width.changed.connect (() => {
         Wallpaperize.Wallpaperiser.W = int.parse (width.text);
@@ -126,37 +131,45 @@ public class Wallpaperize.Window : Gtk.ApplicationWindow {
 
     var reset_button = new Gtk.Button.from_icon_name ("video-display-symbolic");
     reset_button.clicked.connect (get_screen_size);
-    reset_button.set_tooltip_text ("Get resolution");
+    reset_button.set_tooltip_text (_("Get resolution"));
 
     var resolution_box = new Gtk.Grid ();
     resolution_box.column_spacing = 6;
     resolution_box.margin = 6;
     resolution_box.add (width);
-    resolution_box.add (new Gtk.Label ("x"));
+    resolution_box.add (new Gtk.Label ("\u00D7"));
     resolution_box.add (height);
     resolution_box.add (reset_button);
 
-    run_button = new Gtk.Button.with_label ("Wallpaperize!");
+    cancel_button = new Gtk.Button.with_label (_("Cancel"));
+    run_button = new Gtk.Button.with_label (_("Wallpaperize!"));
     run_button.get_style_context ().add_class ("suggested-action");
-    run_button.expand = true;
-    run_button.halign = Gtk.Align.END;
-    run_button.valign = Gtk.Align.END;
-    run_button.margin = 6;
+
+    var actions_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+    actions_box.pack_start (cancel_button);
+    actions_box.pack_end (run_button);
+    actions_box.expand = true;
+    actions_box.halign = Gtk.Align.END;
+    actions_box.valign = Gtk.Align.END;
+    actions_box.margin = 6;
+
+    cancel_button.clicked.connect (() => {
+        this.close ();
+    });
 
     run_button.sensitive = false;
-
     run_button.clicked.connect (() => {
-        run_button.sensitive = false;
-        Wallpaperize.Wallpaperiser.from_file (file);
+    run_button.sensitive = false;
+    Wallpaperize.Wallpaperiser.from_file (file);
         run_button.label = _("Done");
     });
 
-    grid.add (overlay);
-    grid.add (resolution_box);
-    grid.add (run_button);
-    add (grid);
-    show_all ();
+    grid.attach (overlay, 0, 0, 1, 1);
+    grid.attach (resolution_box, 0, 1, 1, 1);
+    grid.attach (actions_box, 0, 2, 1, 1);
+    this.add (grid);
 
+    show_all ();
     get_screen_size ();
   }
 
