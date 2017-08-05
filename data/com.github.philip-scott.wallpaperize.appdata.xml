@@ -27,7 +27,7 @@
   <url type="help">https://github.com/Philip-Scott/wallpaperize/issues</url>
   <update_contact>felescoto@hotmail.com</update_contact>
   <custom>
-    <value key="x-appcenter-color-primary">#FFE8B9</value>
-    <value key="x-appcenter-color-primary-text">#333333</value>
+    <value key="x-appcenter-color-primary">#FCEDC5</value>
+    <value key="x-appcenter-color-primary-text">#FDF6E3</value>
   </custom>
 </component>
