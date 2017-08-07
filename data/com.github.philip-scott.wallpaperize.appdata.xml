@@ -25,9 +25,9 @@
   <url type="homepage">https://github.com/Philip-Scott</url>
   <url type="bugtracker">https://github.com/Philip-Scott/wallpaperize/issues</url>
   <url type="help">https://github.com/Philip-Scott/wallpaperize/issues</url>
-  <update_contact>felescoto@hotmail.com</update_contact>
+  <update_contact>felescoto95@hotmail.com</update_contact>
   <custom>
     <value key="x-appcenter-color-primary">#FCEDC5</value>
-    <value key="x-appcenter-color-primary-text">#FDF6E3</value>
+    <value key="x-appcenter-color-primary-text">#482C4B</value>
   </custom>
 </component>
