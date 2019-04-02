@@ -28,20 +28,9 @@ public class Wallpaperize.Application : Granite.Application {
 
         application_id = PROGRAM_ID;
         program_name = PROGRAM_NAME;
-        app_years = "2016-2017";
         exec_name = PROGRAM_ID;
         app_launcher = PROGRAM_ID;
-
         build_version = "1.0";
-        app_icon = PROGRAM_ID;
-        main_url = "https://github.com/Philip-Scott/%s/".printf (PROGRAM_NAME);
-        bug_url = "https://github.com/Philip-Scott/%s/issues".printf (PROGRAM_NAME);
-        help_url = "https://github.com/Philip-Scott/%s/issues".printf (PROGRAM_NAME);
-        translate_url = "https://github.com/Philip-Scott/%s/tree/master/po".printf (PROGRAM_NAME);
-        about_authors = {"Felipe Escoto <felescoto95@hotmail.com>", null};
-        about_translators = _("translator-credits");
-
-        about_license_type = Gtk.License.GPL_3_0;
     }
 
     public override void open (File[] files, string hint) {
