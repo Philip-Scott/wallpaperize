@@ -37,7 +37,7 @@ public class Wallpaperize.Wallpaperiser : Object {
 
     public static void get_monitor_geometry() {
         var display = Gdk.Display.get_default ();
-        int monitor = display.get_primary_monitor ();
+        Gdk.Monitor monitor = display.get_primary_monitor ();
         Gdk.Rectangle geometry = monitor.get_geometry ();
 
         int scale_factor = monitor.get_scale_factor ();
