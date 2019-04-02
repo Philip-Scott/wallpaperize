@@ -1,0 +1,54 @@
+# Afar translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:10+0200\n"
+"PO-Revision-Date: 2019-04-02 14:10+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: aa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.philip-scott.wallpaperize.desktop.in:3
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:7
+msgid "Wallpaperize"
+msgstr ""
+
+#: data/com.github.philip-scott.wallpaperize.desktop.in:4
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:8
+msgid "Beautify your oddly-sized wallpapers"
+msgstr ""
+
+#: data/com.github.philip-scott.wallpaperize.desktop.in:6
+msgid "com.github.philip-scott.wallpaperize"
+msgstr ""
+
+#: data/com.github.philip-scott.wallpaperize.desktop.in:15
+msgid "About Wallpaperize"
+msgstr ""
+
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:10
+msgid ""
+"Turn your oddly sized wallpapers into a piece of beauty. Simply right click "
+"on your picture's file, and select \"Wallpaperize\" from the drop down menu, "
+"or open the app and drag-and-drop the images you wish to wallpaperize."
+msgstr ""
+
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:20
+msgid "Juno Release"
+msgstr ""
+
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:22
+msgid "Wallpaperize is now available in elementary OS Juno!"
+msgstr ""
+
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:32
+msgid "Felipe Escoto"
+msgstr ""
