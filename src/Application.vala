@@ -19,18 +19,13 @@
 * Authored by: Felipe Escoto <felescoto95@hotmail.com>
 */
 
-public class Wallpaperize.Application : Granite.Application {
-    public const string PROGRAM_ID = "com.github.philip-scott.wallpaperize";
+public class Wallpaperize.Application : Gtk.Application {
     public const string PROGRAM_NAME = "Wallpaperize";
 
     construct {
         flags |= ApplicationFlags.HANDLES_OPEN;
 
-        application_id = PROGRAM_ID;
-        program_name = PROGRAM_NAME;
-        exec_name = PROGRAM_ID;
-        app_launcher = PROGRAM_ID;
-        build_version = "1.0";
+        application_id = "com.github.philip-scott.wallpaperize";
     }
 
     public override void open (File[] files, string hint) {
