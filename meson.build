@@ -30,4 +30,3 @@ executable(
 )
 
 subdir('data')
-subdir('po')
