@@ -24,7 +24,6 @@ public class Wallpaperize.Application : Gtk.Application {
 
     construct {
         flags |= ApplicationFlags.HANDLES_OPEN;
-
         application_id = "com.github.philip-scott.wallpaperize";
     }
 
