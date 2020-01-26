@@ -1,32 +1,29 @@
-project('com.github.philip-scott.wallpaperize', ['vala', 'c'],
-    version: '0.2.0'
-)
+project('com.github.philip-scott.wallpaperize', 'vala', 'c', version: '0.2.0')
 
 gnome = import('gnome')
 i18n = import('i18n')
 
-conf = configuration_data()
-conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
-configure_file(output: 'config.h', configuration: conf)
-config_h_dir = include_directories('.')
+add_project_arguments(
+    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    language: 'c'
+)
 
-c_args = [
-  '-include', 'config.h',
+dependencies = [
+    dependency('glib-2.0'),
+    dependency('gobject-2.0'),
+    dependency('gtk+-3.0'),
+    dependency('granite')
 ]
 
+subdir('src')
+
 executable(
-    'com.github.philip-scott.wallpaperize',
-    'src/Application.vala',
-    'src/Wallpaperize.vala',
-    'src/Window.vala',
-    c_args: c_args,
-    dependencies: [
-        dependency('glib-2.0'),
-        dependency('gobject-2.0'),
-        dependency('gtk+-3.0'),
-        dependency('granite'),
-    ],
+    meson.project_name(),   
+    sources,
+    dependencies: dependencies,
     install : true
 )
 
 subdir('data')
+
+meson.add_install_script('meson/post_install.py')
