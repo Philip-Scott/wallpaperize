@@ -52,6 +52,10 @@ public class Wallpaperize.Window : Gtk.Window {
 
       set {
           _file = value;
+          if (value == null) {
+            return;
+          }
+
           var surface = Wallpaperize.Wallpaperiser.make_surface (value.get_path ());
 
           if (surface != null) {
