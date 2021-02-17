@@ -1,0 +1,59 @@
+# French translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Nathan Bonnemains (@NathanBnm), 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-26 15:21+0100\n"
+"PO-Revision-Date: 2019-04-02 14:10+0200\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
+"Language-Team: Français\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: data/com.github.philip-scott.wallpaperize.desktop.in:3
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:7
+msgid "Wallpaperize"
+msgstr "Wallpaperize"
+
+#: data/com.github.philip-scott.wallpaperize.desktop.in:4
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:8
+msgid "Beautify your oddly-sized wallpapers"
+msgstr "Embellissez vos fonds d'écran aux dimensions inadaptées"
+
+#: data/com.github.philip-scott.wallpaperize.desktop.in:6
+msgid "com.github.philip-scott.wallpaperize"
+msgstr "com.github.philip-scott.wallpaperize"
+
+#: data/com.github.philip-scott.wallpaperize.desktop.in:15
+msgid "About Wallpaperize"
+msgstr "À propos de Wallpaperize"
+
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:10
+msgid ""
+"Turn your oddly sized wallpapers into a piece of beauty. Simply right click "
+"on your picture's file, and select \"Wallpaperize\" from the context menu, "
+"or open the app and drag-and-drop the images you wish to wallpaperize."
+msgstr ""
+"Transformez vos fonds d'écran aux dimensions inadaptées en quelque chose de "
+"beau. Faites simplement un clic droit sur votre fichier d'image, puis "
+"sélectionnez « Wallpaperize » depuis le menu contextuel, ou bien ouvrez "
+"l'application et glissez-déposez les images que vous voulez ajuster."
+
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:20
+msgid "Juno Release"
+msgstr "Version pour Juno"
+
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:22
+msgid "Wallpaperize is now available in elementary OS Juno!"
+msgstr "Wallpaperize est maintenant disponible pour elementary OS Juno !"
+
+#: data/com.github.philip-scott.wallpaperize.appdata.xml.in:32
+msgid "Felipe Escoto"
+msgstr "Felipe Escoto"
