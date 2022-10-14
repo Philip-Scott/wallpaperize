@@ -44,7 +44,7 @@ public class Wallpaperize.Window : Gtk.Window {
   public Gtk.Entry width;
   public Gtk.Entry height;
 
-  private File? _file;
+  private File? _file = null;
   public File? file {
       get {
           return _file;
@@ -70,8 +70,6 @@ public class Wallpaperize.Window : Gtk.Window {
             validate ();
           }
       }
-
-      default = null;
   }
 
   public Window (Gtk.Application app) {
